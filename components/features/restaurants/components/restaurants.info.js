@@ -20,7 +20,7 @@ const BodyText = styled(Text)`
   color: ${(props) => props.theme.colors.ui.primary};
 `;
 
-const RestaurantCard = styled(Card)`
+const ExerciceCard = styled(Card)`
   padding: ${(props) => props.theme.space[3]};
   background-color: ${(props) => props.theme.colors.bg.secondary};
 `;
@@ -49,43 +49,31 @@ const SectionEnd = styled.View`
   justify-content: flex-end;
 `;
 
-export default RestaurantInfos = ({ restautant = {} }) => {
-  const {
-    name = "Some Restaurant",
-    description = "",
-    icon,
-    photos = "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
-    address = "100 some random street",
-    isOpenNow = true,
-    rating = 4,
-    isClosedTemporarily,
-  } = restautant;
+export default ExercicesInfos = ({ training }) => {
+  const { name, description, photo, rating } = training;
   const ratingArray = Array.from(new Array(Math.floor(rating)));
   return (
-    <RestaurantCard style={styles.container} elevation={5}>
-      <Cover key={name} source={{ uri: photos }} />
+    <ExerciceCard style={styles.container} elevation={5}>
+      <Cover key={name} source={{ uri: photo }} />
       <Content>
         <Title>{name}</Title>
         <Section>
           <Rating>
-            {ratingArray.map(() => (
-              <SvgXml xml={favoriteBorder} />
+            {ratingArray.map((index) => (
+              <SvgXml key={index} xml={favoriteBorder} />
             ))}
           </Rating>
           <SectionEnd>
             <Spacer>
-              {isOpenNow && <SvgXml xml={burn} width={20} height={20} />}
+              {true && <SvgXml xml={burn} width={20} height={20} />}
             </Spacer>
           </SectionEnd>
         </Section>
 
-        <BodyText>
-          It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout 🎈🎈🎈.
-        </BodyText>
+        <BodyText>{description}</BodyText>
         {/* </Info> */}
       </Content>
-    </RestaurantCard>
+    </ExerciceCard>
   );
 };
 
