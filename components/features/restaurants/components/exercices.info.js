@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { Text } from "react-native";
 import { StyleSheet, View } from "react-native";

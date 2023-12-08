@@ -1,8 +1,10 @@
+/* eslint-disable curly */
+/* eslint-disable react/no-unstable-nested-components */
 import React from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/infrastructure/theme";
-import { RestaurantScreen } from "./src/screens/restaurants.screen";
+import { RestaurantScreen } from "./src/screens/exercices.screen";
 import {
   useFonts as useOswald,
   Oswald_400Regular,
@@ -11,34 +13,12 @@ import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 import { NavigationContainer } from "@react-navigation/native";
 import { LoginPage } from "./components/login/login.page";
 import { SignUpPage } from "./components/signup/signup.page";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Ionicons from "react-native-vector-icons/Ionicons";
 import { AntDesign } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
-import { SimpleLineIcons } from "@expo/vector-icons";
+// import app from "@react-native-firebase/app";
+// import auth from "@react-native-firebase/auth";
 
-const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-const RouteIcon = (route) => {
-  switch (route) {
-    case "LoginPage":
-      return <AntDesign name="login" size={24} color="black" />;
-    case "SignUpPage":
-      return (
-        <MaterialCommunityIcons
-          name="account-multiple-plus"
-          size={24}
-          color="black"
-        />
-      );
-    case "Exercice":
-      return <MaterialIcons name="fitness-center" size={24} color="black" />;
-    default:
-      return <SimpleLineIcons name="menu" size={24} color="black" />;
-  }
-};
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
@@ -58,7 +38,6 @@ export default function App() {
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size }) => {
               let iconName;
-
               if (route.name === "LoginPage") {
                 iconName = focused ? "login" : "login";
               } else if (route.name === "SignUpPage") {
